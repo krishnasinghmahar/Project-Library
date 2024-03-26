@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1 class="library">Library</h1>
+        <h1 class="total-books">Total Books: 0</h1>
+        <h1 class="read-books">Read Books: 0</h1>
+    </header>
+    <div class="books-container">
+        <div class="add-book" id="add-book"><span>+ Add Book</span></div>
+    </div>
+    <dialog>
+        <form id="form">
+            <h2>Add new book</h2>
+            <input class="input" type="text" id="title" placeholder="Title" required maxlength="100">
+            <div></div>
+            <input class="input" type="text" id="author" placeholder="Author" required maxlength="100" /><br>
+            <input class="input" type="number" id="pages" placeholder="Pages" required max="10000" />
+            <div class="is-read">
+                <label for="is-read">Have you read it?</label>
+                <input class="checkbox" type="checkbox" id="is-read" />
+            </div>
+            <button class="cancel" type="cancel">Cancel</button>
+            <button class="submit" type="submit">Submit</button>
+        </form>
+    </dialog>
+    <button class="material-symbols-outlined" id="add-btn">add</button>
+</body>
+
+</html>
