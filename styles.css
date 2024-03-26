@@ -142,18 +142,39 @@ div .add-book:hover {
     display: grid;
     text-align: center;
     font-size: 32px;
-    border: 5px grey solid;
     height: 300px;
     width: 350px;
-    color: grey;
     border-radius: 30px;
-    background-color: lightgray;
+    background-color: antiquewhite;
+    box-shadow: 0 0 10px;
+    border-left: 20px aqua solid;
+    padding: 20px;
 }
+
 .remove-btn,
-.read-btn{
+.read-btn {
     width: 80%;
     justify-self: center;
     border-radius: 50px;
     margin-bottom: 20px;
 }
 
+#add-book {
+    background-color: aliceblue;
+    padding: 10px;
+}
+
+#add-book:hover {
+    cursor: pointer;
+    background-color: aqua;
+    border-radius: 20px;
+    transform: scale(1.01);
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.remove-btn {
+    background-color: rgba(255, 0, 0, 0.533);
+}

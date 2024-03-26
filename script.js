@@ -18,9 +18,12 @@ function Book(title, author, pages, read) {
 }
 
 function removeBook(index) {
-    myLibrary.splice(index, 1);
-    createCard(); // Re-render the cards after removing the book
+    if (index >= 0 && index < myLibrary.length) {
+        myLibrary.splice(index, 1);
+        createCard(); // 
+    } 
 }
+
 
 
 function addBook() {
@@ -34,24 +37,37 @@ function addBook() {
 }
 
 function createCard() {
-    const libraryEl = document.createElement("div");
-    let titleEl = document.createElement("div");
-    let authorEl = document.createElement("div");
-    let pagesEl = document.createElement("div");
-    let readBtn = document.createElement('button');
-    readBtn.classList.add('read-btn');
-    let removeBtn = document.createElement('button');
-    removeBtn.classList.add('remove-btn');
-    libraryEl.classList.add('card');
-    libraryEl.innerHTML = '';
+    bookContainer.innerHTML = ''; 
 
-    for (let i = 0; i < myLibrary.length; i++) {
-        let book = myLibrary[i];
+    myLibrary.forEach((book, index) => {
+        const libraryEl = document.createElement("div");
+        libraryEl.classList.add('card');
+
+        const titleEl = document.createElement("div");
         titleEl.innerHTML = `<p>Title: "${book.title}"</p>`;
+
+        const authorEl = document.createElement("div");
         authorEl.innerHTML = `<p>by ${book.author}</p>`;
-        pagesEl.innerHTML = `<p>Pages: ${book.pages}</p>`
+
+        const pagesEl = document.createElement("div");
+        pagesEl.innerHTML = `<p>Pages: ${book.pages}</p>`;
+
+        const readBtn = document.createElement('button');
+        readBtn.classList.add('read-btn');
         readBtn.innerHTML = `${book.read ? "Read" : "Not Read Yet"}`;
+
+        const removeBtn = document.createElement('button');
+        removeBtn.classList.add('remove-btn');
         removeBtn.innerHTML = `Remove`;
+
+        removeBtn.addEventListener('click', () => {
+            removeBook(index);
+        });
+
+        readBtn.addEventListener('click', () => {
+            book.read = !book.read;
+            readBtn.innerHTML = `${book.read ? "Read" : "Not Read Yet"}`;
+        });
 
         libraryEl.appendChild(titleEl);
         libraryEl.appendChild(authorEl);
@@ -59,12 +75,8 @@ function createCard() {
         libraryEl.appendChild(readBtn);
         libraryEl.appendChild(removeBtn);
 
-        // readBtn.setAttribute('onclick', 'toggleRead()');
-        removeBtn.addEventListener('click', () => {
-            removeBook(i);
-        });
-        addBookCard.before(libraryEl);
-    }
+        bookContainer.appendChild(libraryEl);
+    });
 }
 
 
@@ -94,7 +106,6 @@ addBookCard.addEventListener('click', () => {
 });
 
 addBtn.addEventListener('click', () => {
-    totalBooks.textContent = `Total Books: ${countBook}`;
     dialog.showModal();
 });
 
